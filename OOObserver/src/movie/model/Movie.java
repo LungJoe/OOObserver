@@ -1,20 +1,30 @@
 package movie.model;
 
 public class Movie {
+	private static Movie firstInstanceOfMovie = null;
 	private String movieTitle;
 	private int releaseYear;
 	private String director;
 	private String writer;
 	private int rating;
 	
-	public Movie(String title, int releaseYear, String director, String writer, int rating) {
-		this.movieTitle = title;
-		this.releaseYear = releaseYear;
-		this.director = director;
-		this.writer = writer;
-		this.rating = rating;
-	}
+//	public Movie(String title, int releaseYear, String director, String writer, int rating) {
+//		this.movieTitle = title;
+//		this.releaseYear = releaseYear;
+//		this.director = director;
+//		this.writer = writer;
+//		this.rating = rating;
+//	}
 
+	private Movie(){}
+	
+	public static Movie getInstance(){
+		if(firstInstanceOfMovie == null){
+			firstInstanceOfMovie = new Movie();
+		}
+		return firstInstanceOfMovie;
+	}
+	
 	public String getMovieTitle() {
 		return movieTitle;
 	}
