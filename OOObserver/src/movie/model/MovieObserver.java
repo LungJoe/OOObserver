@@ -15,6 +15,8 @@ public class MovieObserver extends Observable{
 
 	public void setMovieTitle(String movieTitle) {
 		this.movie.setMovieTitle(movieTitle);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public int getReleaseYear() {
@@ -22,7 +24,9 @@ public class MovieObserver extends Observable{
 	}
 
 	public void setReleaseYear(int releaseYear) {
-		this.movie.setReleaseYear( releaseYear);
+		this.movie.setReleaseYear(releaseYear);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public String getDirector() {
@@ -31,6 +35,8 @@ public class MovieObserver extends Observable{
 
 	public void setDirector(String director) {
 		this.movie.setDirector(director);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public String getWriter() {
@@ -39,6 +45,8 @@ public class MovieObserver extends Observable{
 
 	public void setWriter(String writer) {
 		this.movie.setWriter( writer);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public int getRating() {
@@ -47,5 +55,7 @@ public class MovieObserver extends Observable{
 
 	public void setRating(int rating) {
 		this.movie.setRating( rating);
+		this.setChanged();
+		this.notifyObservers();
 	}
 }

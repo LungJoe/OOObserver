@@ -18,7 +18,13 @@ public class Movie {
 //		this.rating = rating;
 //	}
 
-	private Movie(){}
+	private Movie(){
+		this.movieTitle = "";
+		this.releaseYear = 0;
+		this.director = "";
+		this.writer = "";
+		this.rating = 0;
+	}
 	
 	public static Movie getInstance(){
 		count++;
