@@ -8,16 +8,6 @@ public class Movie {
 	private String writer;
 	private int rating;
 	
-	public static int count = 0;
-	
-//	public Movie(String title, int releaseYear, String director, String writer, int rating) {
-//		this.movieTitle = title;
-//		this.releaseYear = releaseYear;
-//		this.director = director;
-//		this.writer = writer;
-//		this.rating = rating;
-//	}
-
 	private Movie(){
 		this.movieTitle = "";
 		this.releaseYear = 0;
@@ -27,10 +17,6 @@ public class Movie {
 	}
 	
 	public static Movie getInstance(){
-		count++;
-		//if(count < 1){
-			System.out.println("More than 1");
-		//}
 		if(firstInstanceOfMovie == null){
 			firstInstanceOfMovie = new Movie();
 		}

@@ -37,6 +37,7 @@ public class AppMain extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		movieObserver = new MovieObserver();
+		
 		//create first view
 		createMovieView(50, 100);
 		

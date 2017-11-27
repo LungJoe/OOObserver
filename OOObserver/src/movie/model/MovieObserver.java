@@ -54,7 +54,7 @@ public class MovieObserver extends Observable{
 	}
 
 	public void setRating(int rating) {
-		this.movie.setRating( rating);
+		this.movie.setRating(rating);
 		this.setChanged();
 		this.notifyObservers();
 	}

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -27,6 +26,7 @@ public class MovieController implements Initializable, Observer {
 	@FXML private Label ratingText;
 
 	@FXML private Slider ratingSlider;
+	
 	private MovieObserver movieObserver;
 
 	public MovieController(MovieObserver movieObserver) {
@@ -45,6 +45,7 @@ public class MovieController implements Initializable, Observer {
 		movieTitle.textProperty().addListener(new MovieTitleListener());
 		director.textProperty().addListener(new MovieDirectorListener());
 		writer.textProperty().addListener(new MovieWriterListener());
+		ratingSlider.valueProperty().addListener(new SliderListener());
 	}
 
 	public void update(Observable arg0, Object arg1) {
@@ -59,10 +60,9 @@ public class MovieController implements Initializable, Observer {
 
 		if (!writer.getText().equals(movieObserver.getWriter()))
 			writer.setText(movieObserver.getWriter());
-
-		// if(!movieTitle.getText().equals(movieObserver.getMovieTitle()))
-		// movieTitle.setText(movieObserver.getMovieTitle());
-
+		
+		if(ratingSlider.getLayoutX() != movieObserver.getRating())
+			ratingSlider.adjustValue(movieObserver.getRating());
 	}
 
 	private class ReleaseYearListener implements ChangeListener<String> {
@@ -94,6 +94,11 @@ public class MovieController implements Initializable, Observer {
 	private class MovieWriterListener implements ChangeListener<String> {
 		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 			movieObserver.setWriter(newValue);
+		}
+	}
+	private class SliderListener implements ChangeListener<Number> {
+		public void changed(ObservableValue<? extends Number> arg0,	Number oldValue, Number newValue) {	
+			movieObserver.setRating(newValue.intValue());
 		}
 	}
 }
