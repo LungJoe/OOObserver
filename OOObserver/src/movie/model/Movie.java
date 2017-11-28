@@ -1,6 +1,7 @@
 package movie.model;
 
 public class Movie {
+	private static Object singletonLock = new Object();
 	private static Movie firstInstanceOfMovie = null;
 	private String movieTitle;
 	private int releaseYear;
@@ -16,9 +17,13 @@ public class Movie {
 		this.rating = 0;
 	}
 	
-	public static Movie getInstance(){
+	public synchronized static Movie getInstance(){
 		if(firstInstanceOfMovie == null){
-			firstInstanceOfMovie = new Movie();
+			synchronized( singletonLock){
+				if(firstInstanceOfMovie == null){	
+					firstInstanceOfMovie = new Movie();
+				}
+			}
 		}
 		return firstInstanceOfMovie;
 	}
